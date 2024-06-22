@@ -1,1 +1,0 @@
-print('Oi, novamente gente')
