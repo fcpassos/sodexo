@@ -1,11 +1,9 @@
 from django.urls import path
 
 
-from prescription.views import home, sobre, contato
+from prescription.views import home
 
     
 urlpatterns = [
-    path('', home), # Home
-    path('sobre/', sobre), # /sobre/
-    path('contato/', contato), # /contato/
+    path('', home),
 ]
