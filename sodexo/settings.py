@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    'sohealth',
 ]
 
 MIDDLEWARE = [
@@ -72,11 +77,20 @@ WSGI_APPLICATION = 'sodexo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+"""
+DATABASES = {
+    'default': {
+         'ENGINE': 'django.db.backends.oracle',
+         'NAME':   'ujdbcs02-dbprd.unimed.local:1521/pdb_servicos',
+         'USER':    'integrador',
+         'PASSWORD': 'Un1m3d@127'
     }
 }
 
@@ -103,11 +117,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -121,3 +137,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        #'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        #'rest_framework.permissions.IsAuthenticated',
+    ),
+}
